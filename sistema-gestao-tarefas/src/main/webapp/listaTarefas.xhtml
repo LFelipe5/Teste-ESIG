@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+ 	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<h:head>
+	<meta charset="UTF-8"/>
+	<title>Listagem de tarefas</title>
+	<h:outputStylesheet library="gestaoTarefas" name="estilo.css" />
+	</h:head>
+	<h:body>
+		<header>
+			<H3>LISTAGEM DE TAREFAS</H3>
+		</header>
+		<DIV id = "conteudo">
+			<h:form>
+				<h:panelGrid columns = "2">
+					<h:outputLabel value = "Número: " for = "numero"></h:outputLabel>
+					<h:inputText id = "numero" value = "#{gestaoTarefasBean.tarefa.id}" label = "Id">
+						<f:convertNumber type = "number"/>
+					</h:inputText>
+				
+					<h:outputLabel value = "Título/Descrição: " for = "titulo"></h:outputLabel>
+					<h:inputText id = "titulo"></h:inputText>
+					
+					<h:outputLabel value = "Responsável: " for = "responsavel"></h:outputLabel>
+					<h:selectOneMenu id = "responsavel" value = "#{gestaoTarefasBean.tarefa.responsavel}">
+						<f:selectItem itemValue="João" itemLabel="João" />
+						<f:selectItem itemValue="Maria" itemLabel="Maria" />  
+					</h:selectOneMenu>		
+					
+					<h:outputLabel value = "Situação: " for = "situacao"></h:outputLabel>
+					<h:selectOneMenu id = "situacao" >
+						<f:selectItem itemValue="Andamento" itemLabel="Andamento" />
+						<f:selectItem itemValue="Concluída" itemLabel="Concluída" />  
+					</h:selectOneMenu>
+					
+					<h:outputLabel/>
+					<h:commandButton value="Buscar Tarefas" actionListener="#{gestaoTarefasBean.buscar_tarefas}" />	
+					
+					<h:outputLabel/>							
+					<h:commandLink value = "Cadastro de tarefas" action="cadastroTarefa?faces-redirect=true"/>
+				</h:panelGrid>
+
+			</h:form>
+		</DIV>
+	</h:body>
+	<footer>
+		Exemplo de página de listagem de tarefas para aplicação exemplo de sistema de gestão de tarefas para teste técnico da ESIG
+	</footer>
+</html>
